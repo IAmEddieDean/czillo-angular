@@ -16,17 +16,17 @@ h3 Neighborhoods!!
         tr: form.form-group(name='newHood', novalidate)
           td: input(type='text', ng-model='nHood.name' placeholder='Name')
           td: input(type='text', ng-model='nHood.zipCode' placeholder='Zip Code')
-          td(ng-hide='isEditing'): button.btn.btn-xs.btn-success(ng-click='addHood(nHood)') +
-          td(ng-show='isEditing'): button.btn.btn-xs.btn-success(ng-click='saveEdit(nHood)') dkfjkdjf
+          td(ng-hide='isEditing'): button.btn.btn-xs.btn-success(ng-click='addHood(nHood)'): i.fa.fa-plus
+          td(ng-show='isEditing'): button.btn.btn-xs.btn-info(ng-click='saveEdit(nHood)'): i.fa.fa-floppy-o
           //- ng-show
           td &nbsp;
           td &nbsp;
         tr(ng-repeat='neighborhood in neighborhoods')
-          td: a(ui-sref='neighborhood.show({neighborhood: neighborhood})') {{neighborhood.name}}
+          td: a(ui-sref='neighborhoods.show({neighborhood: neighborhood._id})') {{neighborhood.name}}
           td {{neighborhood.zipCode}}
           td &nbsp;
-          td: button.btn.btn-xs.btn-warning(ng-click='editHood(neighborhood)') Edit
-          td: button.btn.btn-xs.btn-danger(ng-click='deleteHood(neighborhood)') Delete
+          td: button.btn.btn-xs.btn-warning(ng-click='editHood(neighborhood)'): i.fa.fa-pencil
+          td: button.btn.btn-xs.btn-danger(ng-click='deleteHood(neighborhood)'): i.fa.fa-trash
           
           
           

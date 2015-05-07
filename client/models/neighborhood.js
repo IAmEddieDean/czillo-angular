@@ -6,6 +6,8 @@ angular.module('czillo')
   function NHood(hood){
     this.name = hood.name;
     this.zipCode = hood.zipCode;
+    this.lat = hood.lat;
+    this.lng = hood.lng;
   }
   
   NHood.prototype.save = function(){
@@ -18,6 +20,14 @@ angular.module('czillo')
   
   NHood.destroy = function(hood){
     return $http.delete(nodeUrl + '/neighborhoods/' + hood._id);
+  };
+  
+  NHood.edit = function(hood, hoodId){
+    return $http.put(nodeUrl + '/neighborhoods/' + hoodId, hood);
+  };
+  
+  NHood.getNHood = function(hoodId){
+    return $http.get(nodeUrl + '/neighborhoods/' + hoodId);
   };
   
   return NHood;

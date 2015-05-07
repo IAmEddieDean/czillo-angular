@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('czillo')
-.controller('NHoodsListCtrl', function($scope, NeighborHood, $window){
+.controller('NHoodsListCtrl', function($scope, NeighborHood, $window, Map){
   
   retrieveHoods();
   
@@ -19,15 +19,38 @@ angular.module('czillo')
     $scope.nHood = hood;
     $scope.isEditing = true;
   };
+  $scope.saveEdit = function(hood){
+    var h = angular.copy(hood);
+    delete h.__v;
+    delete h._id;
+    delete h.createdAt;
+    NeighborHood.edit(h, hood._id)
+    .then(function(){
+      $scope.nHood = {};
+      $window.swal({title: 'Neighborhood Saved', text: 'Your neighborhood was succesfully added.', type: 'success'});
+      $scope.isEditing = false;
+    }).catch(function(){
+      $window.swal({title: 'Neighborhood Error', text: 'There was a problem with your neighborhood. Please move.', type: 'error'});
+    });
+  };
   
   $scope.addHood = function(hood){
     console.log('hell yeah');
-    var nHood = new NeighborHood(hood);
-    nHood.save()
-    .then(function(response){
-      $scope.neighborhoods.push(response.data);
-      $scope.nHood = {};
+    
+    Map.geocode(hood.zipCode, function(results){
+      if(results && results.length){
+        //stop.name = results[0].formatted_address;
+        hood.lat = results[0].geometry.location.lat();
+        hood.lng = results[0].geometry.location.lng();
+        var nHood = new NeighborHood(hood);
+        nHood.save()
+        .then(function(response){
+          $scope.neighborhoods.push(response.data);
+          $scope.nHood = {};
+        });
+      }
     });
+    
   };
   
   $scope.deleteHood = function(hood){
