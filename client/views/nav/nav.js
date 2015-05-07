@@ -5,7 +5,6 @@ angular.module('czillo')
 
   $scope.afAuth.$onAuth(function(data){
     if(data){
-      console.log(data);
       $rootScope.activeUser = data;
       $rootScope.displayName = getDisplayName(data);
       $rootScope.fbUser = $rootScope.fbRoot.child('users/' + data.uid);

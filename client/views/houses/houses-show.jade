@@ -1,0 +1,16 @@
+.row
+  .col-xs-9
+    #map
+  .col-xs-3
+    .row(ng-repeat='house in houses')
+      .col-xs-12
+        h4 {{house.address}}
+      .col-xs-4
+        img.img-responsive(ng-src='{{house.photo}}')
+      .col-xs-8
+        ul
+          li Bedrooms: {{house.bedrooms}}
+          li Baths: {{house.bathrooms}}
+          li Square Feet: {{house.sqFt}}
+      .col-xs-12
+        h5 Price • {{house.price | currency}}

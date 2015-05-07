@@ -14,11 +14,12 @@ angular.module('czillo')
   
   .state('neighborhoods', {url: '/neighborhoods', templateUrl: '/views/neighborhoods/neighborhoods.html', abstract: true})
   .state('neighborhoods.list', {url: '/', templateUrl: '/views/neighborhoods/neighborhoods-list.html', controller: 'NHoodsListCtrl'})
-  .state('neighborhoods.show', {url: '/{neighborhood}', templateUrl: '/views/neighborhoods/neighborhoods-show.html', controller: 'NHoodsShowCtrl'})
+  .state('neighborhoods.show', {url: '/{zipCode}', templateUrl: '/views/neighborhoods/neighborhoods-show.html', controller: 'NHoodsShowCtrl'})
   
   .state('houses', {url: '/houses', templateUrl: '/views/houses/houses.html', abstract: true})
   .state('houses.add', {url: '/new', templateUrl: '/views/houses/houses-record.html', controller: 'HouseCtrl'})
-  .state('houses.edit', {url: '/{house}/edit', templateUrl: '/views/houses/houses-record.html', controller: 'HouseCtrl'});
+  .state('houses.edit', {url: '/{house}/edit', templateUrl: '/views/houses/houses-record.html', controller: 'HouseCtrl'})
+  .state('houses.show', {url: '/{houseId}', templateUrl: '/views/houses/houses-show.html', controller: 'HouseShowCtrl'});
   
   
   

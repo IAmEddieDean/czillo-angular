@@ -6,42 +6,42 @@ button.btn.btn-xs.btn-success(ui-sref='houses.add({zip: neighborhood.zipCode})')
   .col-xs-9
     #map
   .col-xs-3
-    .row
+    .row(ng-repeat='house in houses')
       .col-xs-12
-        h4 Address
+        h4: a(ui-sref='houses.show({houseId: house._id})') {{house.address}}
       .col-xs-4
-        img.img-responsive(src='http://placehold.it/400x300')
+        img.img-responsive(ng-src='{{house.photo}}')
       .col-xs-8
         ul
-          li Bedrooms: 3
-          li Baths: 1.75
-          li Size: 1200 sq.ft.
-    .row
-      .col-xs-8.col-xs-offset-2
-        h5 Price • $1,000,000
-    .row
+          li Bedrooms: {{house.bedrooms}}
+          li Baths: {{house.bathrooms}}
+          li Square Feet: {{house.sqFt}}
       .col-xs-12
-        h4 Address
-      .col-xs-4
-        img.img-responsive(src='http://placehold.it/400x300')
-      .col-xs-8
-        ul
-          li Bedrooms: 3
-          li Baths: 1.75
-          li Size: 1200 sq.ft.
-      .row
-        .col-xs-8.col-xs-offset-2
-          h5 Price • $1,000,000
-    .row
-      .col-xs-12
-        h4 Address
-      .col-xs-4
-        img.img-responsive(src='http://placehold.it/400x300')
-      .col-xs-8
-        ul
-          li Bedrooms: 3
-          li Baths: 1.75
-          li Size: 1200 sq.ft.
-      .row
-        .col-xs-8.col-xs-offset-2
-          h5 Price • $1,000,000
+        h5 Price • {{house.price | currency}}
+    //- .row
+    //-   .col-xs-12
+    //-     h4 Address
+    //-   .col-xs-4
+    //-     img.img-responsive(src='http://placehold.it/400x300')
+    //-   .col-xs-8
+    //-     ul
+    //-       li Bedrooms: 3
+    //-       li Baths: 1.75
+    //-       li Size: 1200 sq.ft.
+    //-   .col-xs-12
+    //-     h5 Price • $1,000,000
+    //- .row
+    //-   .col-xs-12
+    //-     h4 Address
+    //-   .col-xs-4
+    //-     img.img-responsive(src='http://placehold.it/400x300')
+    //-   .col-xs-8
+    //-     ul
+    //-       li Bedrooms: 3
+    //-       li Baths: 1.75
+    //-       li Size: 1200 sq.ft.
+    //-   .row
+    //-     .col-xs-8.col-xs-offset-2
+    //-       h5 Price • $1,000,000
+    
+    

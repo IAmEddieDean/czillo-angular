@@ -26,8 +26,8 @@ angular.module('czillo')
     return $http.put(nodeUrl + '/neighborhoods/' + hoodId, hood);
   };
   
-  NHood.getNHood = function(hoodId){
-    return $http.get(nodeUrl + '/neighborhoods/' + hoodId);
+  NHood.getNHood = function(hoodZipCode){
+    return $http.get(nodeUrl + '/neighborhoods/' + hoodZipCode);
   };
   
   return NHood;

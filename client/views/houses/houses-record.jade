@@ -6,11 +6,13 @@ h3 Add Your Home to Czillo
       .form-group
         input(type='text' ng-model='house.address' placeholder='Address')
         input(type='text' ng-model='house.city' placeholder='City')
-        input(type='text' ng-model='house.state' placeholder='State')
+        select(ng-model='house.state')
+          option(ng-repeat='state in states') {{state}}
         input(type='text' ng-model='house.zipCode' placeholder='Zip Code')
       .form-group
         input(type='number' ng-model='house.bedrooms' placeholder='Bedrooms')
         input(type='number' ng-model='house.bathrooms' placeholder='Bathrooms')
+        input(type='number' ng-model='house.sqFt' placeholder='Square Footage')
         input(type='number' ng-model='house.price' placeholder='Asking Price')
         //- input(type='text' ng-model='house.photo' placeholder='Photo Url')
       .form-group

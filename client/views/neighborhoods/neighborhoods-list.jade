@@ -22,7 +22,7 @@ h3 Neighborhoods!!
           td &nbsp;
           td &nbsp;
         tr(ng-repeat='neighborhood in neighborhoods')
-          td: a(ui-sref='neighborhoods.show({neighborhood: neighborhood._id})') {{neighborhood.name}}
+          td: a(ui-sref='neighborhoods.show({zipCode: neighborhood.zipCode})') {{neighborhood.name}}
           td {{neighborhood.zipCode}}
           td &nbsp;
           td: button.btn.btn-xs.btn-warning(ng-click='editHood(neighborhood)'): i.fa.fa-pencil
