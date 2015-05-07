@@ -1,0 +1,41 @@
+h3 Neighborhoods!!
+
+.row
+  .col-xs-4.col-xs-offset-4
+    table.table.table-striped
+      thead
+        tr
+          th Name
+          //- th City
+          //- th State
+          th Zip Code
+          th Save
+          th Edit
+          th Delete
+      tbody
+        tr: form.form-group(name='newHood', novalidate)
+          td: input(type='text', ng-model='nHood.name' placeholder='Name')
+          td: input(type='text', ng-model='nHood.zipCode' placeholder='Zip Code')
+          td(ng-hide='isEditing'): button.btn.btn-xs.btn-success(ng-click='addHood(nHood)') +
+          td(ng-show='isEditing'): button.btn.btn-xs.btn-success(ng-click='saveEdit(nHood)') dkfjkdjf
+          //- ng-show
+          td &nbsp;
+          td &nbsp;
+        tr(ng-repeat='neighborhood in neighborhoods')
+          td: a(ui-sref='neighborhood.show({neighborhood: neighborhood})') {{neighborhood.name}}
+          td {{neighborhood.zipCode}}
+          td &nbsp;
+          td: button.btn.btn-xs.btn-warning(ng-click='editHood(neighborhood)') Edit
+          td: button.btn.btn-xs.btn-danger(ng-click='deleteHood(neighborhood)') Delete
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          //- th: select.form-control(ng-model)

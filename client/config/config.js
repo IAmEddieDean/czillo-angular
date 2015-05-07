@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('poseidon')
+angular.module('czillo')
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
 
@@ -10,5 +10,8 @@ angular.module('poseidon')
   .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
   .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
-  .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'});
+  .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
+  .state('neighborhoods', {url: '/neighborhoods', templateUrl: '/views/neighborhoods/neighborhoods.html', abstract: true})
+  .state('neighborhoods.list', {url: '/', templateUrl: '/views/neighborhoods/neighborhoods-list.html', controller: 'NHoodsListCtrl'})
+  .state('neighborhoods.show', {url: '/{neighborhood}', templateUrl: '/views/neighborhoods/neighborhoods-show.html', controller: 'NHoodsShowCtrl'});
 });
