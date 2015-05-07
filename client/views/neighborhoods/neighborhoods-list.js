@@ -35,7 +35,6 @@ angular.module('czillo')
   };
   
   $scope.addHood = function(hood){
-    console.log('hell yeah');
     
     Map.geocode(hood.zipCode, function(results){
       if(results && results.length){

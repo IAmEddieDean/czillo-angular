@@ -1,0 +1,34 @@
+h3 Add Your Home to Czillo
+
+.row
+  .col-xs-8.col-xs-offset-2
+    form
+      .form-group
+        input(type='text' ng-model='house.address' placeholder='Address')
+        input(type='text' ng-model='house.city' placeholder='City')
+        input(type='text' ng-model='house.state' placeholder='State')
+        input(type='text' ng-model='house.zipCode' placeholder='Zip Code')
+      .form-group
+        input(type='number' ng-model='house.bedrooms' placeholder='Bedrooms')
+        input(type='number' ng-model='house.bathrooms' placeholder='Bathrooms')
+        input(type='number' ng-model='house.price' placeholder='Asking Price')
+        //- input(type='text' ng-model='house.photo' placeholder='Photo Url')
+      .form-group
+        img#photo(ng-src='{{house.photo}}')
+      .form-group
+        button.btn.btn-success(ng-click='save(house)') Add Home
+        //-button.btn.btn-info() Save Home
+        button.btn.btn-info(ng-click='preview()') Preview
+        .col-xs-4
+          input.form-control(type='file', name='photo', onchange='angular.element(this).scope().preview()')
+        //- img#previewPic(ng-src='{{tempPhoto}}')
+    hr
+    .row
+      .col-xs-12#photobuttons
+        button.btn.btn-success.photobutton(ng-click='cameraOn()' ng-hide='camera'): i.fa.fa-camera &nbsp;&nbsp; Turn on Camera
+        button.btn.btn-warning.photobutton(ng-click='takePhoto()' ng-show='camera'): i.fa.fa-bolt &nbsp;&nbsp; Take Picture
+        button.btn.btn-danger.photobutton(ng-click='cameraOff()' ng-show='camera'): i.fa.fa-ban &nbsp;&nbsp; Turn off Camera
+    .row.center
+      .col-xs-12
+        #camera(ng-show='camera')
+      

@@ -1,6 +1,47 @@
 h3 SHOW NEIGHBORHOOD
 h4 {{neighborhood.name}}
+button.btn.btn-xs.btn-success(ui-sref='houses.add({zip: neighborhood.zipCode})') Add House
 
 .row
-  .col-xs-8.col-xs-offset-2
+  .col-xs-9
     #map
+  .col-xs-3
+    .row
+      .col-xs-12
+        h4 Address
+      .col-xs-4
+        img.img-responsive(src='http://placehold.it/400x300')
+      .col-xs-8
+        ul
+          li Bedrooms: 3
+          li Baths: 1.75
+          li Size: 1200 sq.ft.
+    .row
+      .col-xs-8.col-xs-offset-2
+        h5 Price • $1,000,000
+    .row
+      .col-xs-12
+        h4 Address
+      .col-xs-4
+        img.img-responsive(src='http://placehold.it/400x300')
+      .col-xs-8
+        ul
+          li Bedrooms: 3
+          li Baths: 1.75
+          li Size: 1200 sq.ft.
+      .row
+        .col-xs-8.col-xs-offset-2
+          h5 Price • $1,000,000
+    .row
+      .col-xs-12
+        h4 Address
+      .col-xs-4
+        img.img-responsive(src='http://placehold.it/400x300')
+      .col-xs-8
+        ul
+          li Bedrooms: 3
+          li Baths: 1.75
+          li Size: 1200 sq.ft.
+      .row
+        .col-xs-8.col-xs-offset-2
+          h5 Price • $1,000,000
