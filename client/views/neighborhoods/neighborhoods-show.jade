@@ -6,7 +6,7 @@ button.btn.btn-xs.btn-success(ui-sref='houses.add({zip: neighborhood.zipCode})')
   .col-xs-9
     #map
   .col-xs-3
-    .row(ng-repeat='house in houses')
+    .row(ng-repeat='house in houses' ng-mouseenter='bounceMarker(house)' ng-mouseleave='bounceMarker(house)')
       .col-xs-12
         h4: a(ui-sref='houses.show({houseId: house._id})') {{house.address}}
       .col-xs-4

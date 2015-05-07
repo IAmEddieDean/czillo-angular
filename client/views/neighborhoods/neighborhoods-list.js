@@ -11,7 +11,6 @@ angular.module('czillo')
   function retrieveHoods(){
     NeighborHood.retrieve()
     .then(function(response){
-      console.log(response.data);
       $scope.neighborhoods = response.data;
     });
   }
@@ -24,6 +23,7 @@ angular.module('czillo')
     delete h.__v;
     delete h._id;
     delete h.createdAt;
+    delete h.firebaseId;
     NeighborHood.edit(h, hood._id)
     .then(function(){
       $scope.nHood = {};

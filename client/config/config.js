@@ -5,7 +5,7 @@ angular.module('czillo')
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-  .state('home', {url: '/', templateUrl: '/views/general/home.html'})
+  .state('home', {url: '/', templateUrl: '/views/general/home.html', controller: 'HomeCtrl'})
   .state('about', {url: '/about', templateUrl: '/views/general/about.html'})
   .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
   .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})
@@ -18,7 +18,7 @@ angular.module('czillo')
   
   .state('houses', {url: '/houses', templateUrl: '/views/houses/houses.html', abstract: true})
   .state('houses.add', {url: '/new', templateUrl: '/views/houses/houses-record.html', controller: 'HouseCtrl'})
-  .state('houses.edit', {url: '/{house}/edit', templateUrl: '/views/houses/houses-record.html', controller: 'HouseCtrl'})
+  .state('houses.edit', {url: '/{houseId}/edit', templateUrl: '/views/houses/houses-record.html', controller: 'HouseCtrl'})
   .state('houses.show', {url: '/{houseId}', templateUrl: '/views/houses/houses-show.html', controller: 'HouseShowCtrl'});
   
   

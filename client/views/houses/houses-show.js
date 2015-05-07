@@ -4,10 +4,24 @@ angular.module('czillo')
 .controller('HouseShowCtrl', function($scope, $state, $window, House, Map){
   $scope.house = {};
   getHouse();
-  console.log($state.params.houseId);
   function getHouse(){
-    House.getHouse($state.params.houseId);
+    House.getHouse($state.params.houseId)
+    .then(function(response){
+      $scope.house = response.data;
+      var map = Map.create('#map', $scope.house.lat, $scope.house.lng, 18);
+      Map.addMarker(map, $scope.house.lat, $scope.house.lng, $scope.house.address, '/assets/pin.png');
+    });
   }
+  $scope.editHouse = function(){
+    $state.go('houses.edit', {houseId: $state.params.houseId});
+  };
+  
+  $scope.destroyHouse = function(){
+    House.destroy($scope.house._id)
+    .then(function(){
+      $state.go('neighborhoods.show',{'zipCode': $scope.house.zipCode});
+    });
+  };
   
   //
   //

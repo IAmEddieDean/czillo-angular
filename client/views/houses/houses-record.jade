@@ -2,7 +2,7 @@ h3 Add Your Home to Czillo
 
 .row
   .col-xs-8.col-xs-offset-2
-    form
+    form(novalidate)
       .form-group
         input(type='text' ng-model='house.address' placeholder='Address')
         input(type='text' ng-model='house.city' placeholder='City')
@@ -18,8 +18,8 @@ h3 Add Your Home to Czillo
       .form-group
         img#photo(ng-src='{{house.photo}}')
       .form-group
-        button.btn.btn-success(ng-click='save(house)') Add Home
-        //-button.btn.btn-info() Save Home
+        button.btn.btn-success(ng-click='save(house)' ng-hide='house._id') Add Home
+        button.btn.btn-info(ng-click='saveEdit(house)' ng-show='house._id') Save Edit
         button.btn.btn-info(ng-click='preview()') Preview
         .col-xs-4
           input.form-control(type='file', name='photo', onchange='angular.element(this).scope().preview()')

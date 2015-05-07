@@ -4,8 +4,17 @@ angular.module('czillo')
 .controller('HouseCtrl', function($scope, $state, $window, House, Map, states){
   $scope.house = {};
   $scope.states = states;
-    
+  //$scope.editMode = $state.params.houseId ? true : false;
   $scope.camera = false;
+  
+  if($state.params.houseId){
+    getHouse();
+  }
+  
+  
+  
+  
+  
   $window.Webcam.set({width: 200, height: 150});
   
   $scope.cameraOn = function(){
@@ -35,7 +44,6 @@ angular.module('czillo')
         var h = new House(house);
         h.add()
         .then(function(response){
-          console.log(response);
           $window.swal({title: 'House Saved', text: 'Your house was succesfully saved.', type: 'success'});
           $state.go('neighborhoods.show',{'zipCode': response.data.zipCode});
         })
@@ -45,7 +53,30 @@ angular.module('czillo')
       }
     });
   };
-  
+  $scope.saveEdit = function(house){//change house out
+    var h = angular.copy(house);
+    delete h.__v;
+    delete h._id;
+    delete h.createdAt;
+    House.edit(h, house._id)
+    .then(function(response){
+      $scope.house = {};
+      $window.swal({title: 'House Saved', text: 'Your house was succesfully saved.', type: 'success'});
+      $state.go('neighborhoods.show',{'zipCode': response.data.zipCode});
+    }).catch(function(){
+      $window.swal({title: 'House Error', text: 'There was a problem with your house. Please renovate.', type: 'error'});
+    });
+  };
+  function getHouse(){
+    House.getHouse($state.params.houseId)
+    .then(function(response){
+      console.log(response.data);
+      $scope.house = response.data;
+    }).catch(function(){
+      $window.swal({title: 'House Error', text: 'There was a problem saving your house. Please renovate.', type: 'error'});
+    });
+  }
+
   function previewFile () {
       var preview = document.querySelector('img');
       var file    = document.querySelector('input[type=file]').files[0];
