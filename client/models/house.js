@@ -26,8 +26,8 @@ angular.module('czillo')
   House.getHouses = function(zipCode){
     return $http.get(nodeUrl + '/houses/zip/' + zipCode);
   };
-  House.getAllHouses = function(){
-    return $http.get(nodeUrl + '/houses/all/');
+  House.getAllHouses = function(all){
+    return $http.get(nodeUrl + '/houses/all/' + all);
   };
   House.edit = function(house, houseId){
     return $http.put(nodeUrl + '/houses/' + houseId, house);

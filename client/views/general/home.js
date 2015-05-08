@@ -7,8 +7,9 @@ angular.module('czillo')
   $scope.houses = [];
   getHouses();
 
-  function getHouses(){
-    House.getAllHouses()
+  function getHouses(all){
+    all = all || '';
+    House.getAllHouses(all)
     .then(function(response){
       $scope.map = Map.create('#map', 39.5, -98.35, 4);
       $scope.houses = response.data;
@@ -24,6 +25,10 @@ angular.module('czillo')
     }else{
       house.marker.setAnimation($window.google.maps.Animation.BOUNCE);
     }
+  };
+  
+  $scope.showAll = function(){
+    getHouses('full');
   };
   
 });
