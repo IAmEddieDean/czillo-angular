@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('czillo')
-.controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, User, $http){
+.controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, User, $http, $window){
 
   $scope.afAuth.$onAuth(function(data){
     if(data){
@@ -20,14 +20,15 @@ angular.module('czillo')
       $rootScope.fbUser = null;
       $rootScope.afUser = null;
       $http.defaults.headers.common.Authorization = null;
-
     }
+    
     
     $state.go('home');
   });
 
   $scope.logout = function(){
     User.logout();
+    window.location.reload();
   };
 
   function getDisplayName(data){

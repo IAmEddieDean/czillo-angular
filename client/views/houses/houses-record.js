@@ -34,13 +34,18 @@ angular.module('czillo')
   $scope.preview = function(){
     previewFile();
   };
-  $scope.save = function(house){
+  
+  $scope.geoCode = function(house){
     var location = house.address + ' ' + house.city + ', ' + house.state + ' ' + house.zipCode;
     Map.geocode(location, function(results){
       if(results && results.length){
-        //stop.name = results[0].formatted_address;
         house.lat = results[0].geometry.location.lat();
         house.lng = results[0].geometry.location.lng();
+      }
+    house._id ? saveEdit(house) : save(house);
+    });
+  };
+  function save(house){
         var h = new House(house);
         h.add()
         .then(function(response){
@@ -50,10 +55,9 @@ angular.module('czillo')
         .catch(function(){
           $window.swal({title: 'House Error', text: 'There was a problem saving your house. Please renovate.', type: 'error'});
         });
-      }
-    });
-  };
-  $scope.saveEdit = function(house){//change house out
+      
+  }
+  function saveEdit(house){
     var h = angular.copy(house);
     delete h.__v;
     delete h._id;
@@ -66,7 +70,7 @@ angular.module('czillo')
     }).catch(function(){
       $window.swal({title: 'House Error', text: 'There was a problem with your house. Please renovate.', type: 'error'});
     });
-  };
+  }
   function getHouse(){
     House.getHouse($state.params.houseId)
     .then(function(response){

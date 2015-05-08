@@ -12,7 +12,14 @@ angular.module('czillo')
     NeighborHood.retrieve()
     .then(function(response){
       $scope.neighborhoods = response.data;
+      makeMarkers();
     });
+  }
+  function makeMarkers(){
+    $scope.map = Map.create('#map', 39.5, -98.35, 3);
+    $scope.neighborhoods.forEach(function(n){
+    n.marker = Map.addMarker($scope.map, n.lat, n.lng, n.zipCode, '/assets/pin.png');
+  });
   }
   $scope.editHood = function(hood){
     $scope.nHood = hood;
@@ -29,6 +36,7 @@ angular.module('czillo')
       $scope.nHood = {};
       $window.swal({title: 'Neighborhood Saved', text: 'Your neighborhood was succesfully added.', type: 'success'});
       $scope.isEditing = false;
+      makeMarkers();
     }).catch(function(){
       $window.swal({title: 'Neighborhood Error', text: 'There was a problem with your neighborhood. Please move.', type: 'error'});
     });
@@ -46,6 +54,7 @@ angular.module('czillo')
         .then(function(response){
           $scope.neighborhoods.push(response.data);
           $scope.nHood = {};
+          makeMarkers();
         });
       }
     });
@@ -58,6 +67,7 @@ angular.module('czillo')
       $window._.remove($scope.neighborhoods, function(n){
         return n._id === result.data._id;
       });
+      makeMarkers();
     });
   };
   

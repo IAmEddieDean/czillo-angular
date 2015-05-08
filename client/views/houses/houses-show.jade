@@ -1,4 +1,4 @@
-.row
+.row.pad
   .col-xs-4
     #map.showcase
   .col-xs-8
@@ -14,6 +14,6 @@
           li Square Feet: {{house.sqFt}}
       .col-xs-12
         h5 Price • {{house.price | currency: fractionsize(0)}}
-      .col-xs-4
+      .col-xs-4(ng-show='activeUser.uid === house.firebaseId')
         button.btn.btn-warning.btn-sm(ng-click='editHouse()') Edit House
         button.btn.btn-danger.btn-sm(ng-click='destroyHouse()') Delete House

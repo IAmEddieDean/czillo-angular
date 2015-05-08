@@ -1,33 +1,36 @@
-h3 Neighborhoods!!
 
+h3 Neighborhoods!!
 .row
-  .col-xs-4.col-xs-offset-4
-    table.table.table-striped
-      thead
-        tr
-          th Name
-          //- th City
-          //- th State
-          th Zip Code
-          th Save
-          th Edit
-          th Delete
-      tbody
-        tr: form.form-group(name='newHood', novalidate)
-          td: input(type='text', ng-model='nHood.name' placeholder='Name')
-          td: input(type='text', ng-model='nHood.zipCode' placeholder='Zip Code')
-          td(ng-hide='isEditing'): button.btn.btn-xs.btn-success(ng-click='addHood(nHood)'): i.fa.fa-plus
-          td(ng-show='isEditing'): button.btn.btn-xs.btn-info(ng-click='saveEdit(nHood)'): i.fa.fa-floppy-o
-          //- ng-show
-          td &nbsp;
-          td &nbsp;
-        tr(ng-repeat='neighborhood in neighborhoods')
-          td: a(ui-sref='neighborhoods.show({zipCode: neighborhood.zipCode})') {{neighborhood.name}}
-          td {{neighborhood.zipCode}}
-          td &nbsp;
-          td: button.btn.btn-xs.btn-warning(ng-click='editHood(neighborhood)'): i.fa.fa-pencil
-          td: button.btn.btn-xs.btn-danger(ng-click='deleteHood(neighborhood)'): i.fa.fa-trash
-          
+  .col-xs-12  
+    .col-xs-12.col-md-6
+      #map
+    .col-xs-12.col-md-4
+      table.table.table-striped#hoods
+        thead
+          tr
+            th Name
+            //- th City
+            //- th State
+            th Zip Code
+            th Save
+            th Edit
+            th Delete
+        tbody
+          tr: form.form-group(name='newHood', novalidate)
+            td: input(type='text', ng-model='nHood.name' placeholder='Name')
+            td: input(type='text', ng-model='nHood.zipCode' placeholder='Zip Code')
+            td(ng-hide='isEditing'): button.btn.btn-xs.btn-success(ng-click='addHood(nHood)'): i.fa.fa-plus
+            td(ng-show='isEditing'): button.btn.btn-xs.btn-info(ng-click='saveEdit(nHood)'): i.fa.fa-floppy-o
+            //- ng-show
+            td &nbsp;
+            td &nbsp;
+          tr(ng-repeat='neighborhood in neighborhoods')
+            td: a(ui-sref='neighborhoods.show({zipCode: neighborhood.zipCode})') {{neighborhood.name}}
+            td {{neighborhood.zipCode}}
+            td &nbsp;
+            td: button.btn.btn-xs.btn-warning(ng-click='editHood(neighborhood)'): i.fa.fa-pencil
+            td: button.btn.btn-xs.btn-danger(ng-click='deleteHood(neighborhood)'): i.fa.fa-trash
+            
           
           
           
