@@ -1,1 +1,18 @@
-h3 HOME
+h3 WELCOME TO CZILLO!?!??!
+
+.row
+  .col-xs-9.fixed
+    #map
+  .col-xs-3.scroll
+    .row(ng-repeat='house in houses' ng-mouseenter='bounceMarker(house)' ng-mouseleave='bounceMarker(house)')
+      .col-xs-12
+        h4: a(ui-sref='houses.show({houseId: house._id})') {{house.address}}
+      .col-xs-4
+        img.img-responsive(ng-src='{{house.photo}}')
+      .col-xs-8
+        ul
+          li Bedrooms: {{house.bedrooms}}
+          li Baths: {{house.bathrooms}}
+          li Square Feet: {{house.sqFt}}
+      .col-xs-12
+        h5 Price • {{house.price | currency}}

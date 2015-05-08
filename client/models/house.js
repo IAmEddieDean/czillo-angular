@@ -21,10 +21,13 @@ angular.module('czillo')
     return $http.post(nodeUrl + '/houses', this);
   };
   House.getHouse = function(houseId){
-    return $http.get(nodeUrl + '/houses/show/' + houseId);
+    return $http.get(nodeUrl + '/houses/one/' + houseId);
   };
   House.getHouses = function(zipCode){
-    return $http.get(nodeUrl + '/houses/' + zipCode);
+    return $http.get(nodeUrl + '/houses/zip/' + zipCode);
+  };
+  House.getAllHouses = function(){
+    return $http.get(nodeUrl + '/houses/all/');
   };
   House.edit = function(house, houseId){
     return $http.put(nodeUrl + '/houses/' + houseId, house);
